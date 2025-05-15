@@ -1,1 +1,40 @@
-./node_modules
+# Dependências
+node_modules
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+/dist
+/build
+
+# Arquivos de cobertura
+/coverage
+
+# Arquivos temporários
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração do IDE
+.vscode/
+
+# Arquivos de cache
+.npm
+.eslintcache
+.tsbuildinfo
+
+# Arquivos de debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos locais
+*.local
+
+# TypeScript cache
+*.tsbuildinfo
