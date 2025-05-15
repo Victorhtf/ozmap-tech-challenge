@@ -15,11 +15,10 @@ class Routes {
       res.status(200).json({
         status: 'success',
         message: 'API OzMap online',
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     });
   }
-
 
   private setupApiRoutes(): void {
     this.router.use('/regions', regionRoutes);

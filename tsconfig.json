@@ -8,7 +8,5 @@
     "esModuleInterop": true
   },
   "types": ["reflect-metadata", "mocha"],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

@@ -7,8 +7,10 @@
     "dev": "nodemon index.ts",
     "start": "ts-node index.ts",
     "build": "tsc",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -27,11 +29,11 @@
     "@typescript-eslint/parser": "^6.7.3",
     "chai": "^4.3.10",
     "eslint": "^8.50.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
     "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
-    "prettier": "^3.0.3",
+    "prettier": "^3.5.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }
