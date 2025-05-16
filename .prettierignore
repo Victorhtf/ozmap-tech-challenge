@@ -1,0 +1,21 @@
+# Ignorar docs e markdowns
+README.md
+docs/**/*.md
+
+# Ignorar pastas de build e dependências
+node_modules
+build
+coverage
+
+# Ignorar arquivos de lock e logs
+yarn.lock
+package-lock.json
+yarn-error.log
+
+# Ignorar arquivos de ambiente
+.env
+.env.example
+.gitignore
+.github/**
+
+

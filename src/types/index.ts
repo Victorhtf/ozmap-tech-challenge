@@ -1,4 +1,5 @@
 import { Request } from 'express';
+import { Document } from 'mongoose';
 
 export interface Coordinates {
   latitude: number;
@@ -50,4 +51,16 @@ export interface ErrorResponse {
 export interface SuccessResponse<T> {
   status: string;
   data: T;
+}
+
+export interface GeoJSONPolygon {
+  type: 'Polygon';
+  coordinates: number[][][];
+}
+
+export interface IRegion extends Document {
+  name: string;
+  geometry: GeoJSONPolygon;
+  createdAt: Date;
+  updatedAt: Date;
 }

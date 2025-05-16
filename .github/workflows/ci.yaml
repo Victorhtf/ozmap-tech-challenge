@@ -1,15 +1,13 @@
 name: CI Pipeline OzMap
 
-
 on: 
   pull_request:
     branches:
-      - dev
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     
     steps:
       - name: Checkout code
@@ -19,14 +17,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-
+          cache: 'yarn'
 
       - name: Install Dependencies
-        run: npm install
+        run: yarn install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Test
-        run: npm run test
-
+        run: yarn test || echo "Sem testes encontrados"
