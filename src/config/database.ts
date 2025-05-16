@@ -9,7 +9,7 @@ class Database {
   private isConnected: boolean = false;
 
   private constructor() {
-    this.mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/ozmap';
+    this.mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/';
   }
 
   public static getInstance(): Database {

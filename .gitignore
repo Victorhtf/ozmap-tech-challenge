@@ -38,3 +38,6 @@ yarn-error.log*
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Variáveis de ambiente
+.env
