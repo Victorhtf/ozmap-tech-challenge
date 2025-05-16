@@ -16,32 +16,38 @@ export interface Address {
   fullAddress: string;
 }
 
-export interface GeocodingResponse {
-  coordinates: Coordinates;
-  formattedAddress?: string;
-  success: boolean;
-  error?: string;
+// Tipos para polígono
+export interface GeoJSONPolygon {
+  type: 'Polygon';
+  coordinates: number[][][];
 }
 
-export interface RegionRequest extends Request {
-  params: {
-    id?: string;
-  };
-  body: {
-    name?: string;
-    geometry?: {
-      type: 'Polygon';
-      coordinates: number[][][];
-    };
-  };
-  query: {
-    latitude?: string;
-    longitude?: string;
-    distance?: string;
-    address?: string;
-  };
+// Tipos para regiões
+export interface IRegion extends Document {
+  name: string;
+  geometry: GeoJSONPolygon;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
+// Tipos para base de regiões
+export interface RegionBase {
+  name: string;
+  geometry: GeoJSONPolygon;
+}
+
+// Tipos para requisições
+export type RegionRequest<T = any> = Request<{}, {}, T>
+
+// Tipos para craação e atualização de regiões
+export interface RegionCreate extends RegionBase {}
+
+// Tipos para atualização de regiões
+export interface RegionUpdate extends RegionBase {
+  id: string;
+}
+
+// Tipos para respostas
 export interface ErrorResponse {
   status: string;
   message: string;
@@ -51,16 +57,4 @@ export interface ErrorResponse {
 export interface SuccessResponse<T> {
   status: string;
   data: T;
-}
-
-export interface GeoJSONPolygon {
-  type: 'Polygon';
-  coordinates: number[][][];
-}
-
-export interface IRegion extends Document {
-  name: string;
-  geometry: GeoJSONPolygon;
-  createdAt: Date;
-  updatedAt: Date;
 }

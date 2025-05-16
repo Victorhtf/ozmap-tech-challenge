@@ -17,4 +17,22 @@ export default class RegionService {
   static async getAllRegions(): Promise<IRegion[]> {
     return Region.find();
   }
+
+  static async getRegionById(id: string): Promise<IRegion | null> {
+    return Region.findById(id);
+  }
+
+  static async updateRegion(id: string, name: string, geometry: GeoJSONPolygon): Promise<IRegion | null> {
+    return Region.findByIdAndUpdate(id, { name, geometry }, { new: true });
+  }
+
+  static async deleteRegion(id: string): Promise<IRegion | null> {
+    return Region.findByIdAndDelete(id);
+  }
+
+  static async getRegionsByCoordinates(coordinates: GeoJSONPolygon): Promise<IRegion[]> {
+    return Region.find({ geometry: { $geoIntersects: { $geometry: coordinates } } });
+  }
+
+  
 }
