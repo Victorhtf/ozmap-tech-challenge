@@ -1,0 +1,42 @@
+{
+  "region": {
+    "validation": {
+      "required": "El nombre y la geometría son obligatorios",
+      "polygon": "La geometría debe ser de tipo Polígono"
+    },
+    "error": {
+      "create": "Error al crear la región",
+      "getAll": "Error al obtener regiones",
+      "getById": "Error al obtener región",
+      "update": "Error al actualizar región",
+      "delete": "Error al eliminar región",
+      "getByCoordinates": "Error al buscar regiones por coordenadas",
+      "duplicate": "Ya existe una región con el nombre '{{name}}'"
+    },
+    "success": {
+      "status": "success"
+    }
+  },
+  "language": {
+    "error": {
+      "required": "El idioma es obligatorio",
+      "unsupported": "El idioma '{{language}}' no es compatible. Idiomas compatibles: {{supported}}",
+      "change": "Error al cambiar el idioma",
+      "get": "Error al obtener el idioma actual"
+    },
+    "success": {
+      "changed": "Idioma cambiado con éxito a '{{language}}'"
+    }
+  },
+  "common": {
+    "status": {
+      "success": "success",
+      "error": "error"
+    }
+  },
+  "api": {
+    "health": {
+      "online": "API OzMap en línea"
+    }
+  }
+}

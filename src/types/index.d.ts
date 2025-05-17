@@ -1,6 +1,5 @@
 import { Request } from 'express';
 import { Document } from 'mongoose';
-import { RequestWithI18n } from './i18n';
 
 export interface Coordinates {
   latitude: number;
@@ -38,7 +37,7 @@ export interface RegionBase {
 }
 
 // Tipos para requisições
-export type RegionRequest<T = any> = Request<{}, {}, T>
+export type RegionRequest<T = any> = Request<{}, {}, T>;
 
 // Tipos para craação e atualização de regiões
 export interface RegionCreate extends RegionBase {}
@@ -59,5 +58,3 @@ export interface SuccessResponse<T> {
   status: string;
   data: T;
 }
-
-export { RequestWithI18n };
