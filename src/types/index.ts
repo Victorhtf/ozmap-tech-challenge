@@ -1,5 +1,6 @@
 import { Request } from 'express';
 import { Document } from 'mongoose';
+import { RequestWithI18n } from './i18n';
 
 export interface Coordinates {
   latitude: number;
@@ -58,3 +59,5 @@ export interface SuccessResponse<T> {
   status: string;
   data: T;
 }
+
+export { RequestWithI18n };

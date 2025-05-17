@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import routes from './src/routes/index';
 import { connectDB } from './src/config/database';
 import { errorHandler } from './src/middlewares/errorHandler';
+import i18next from './src/config/i18n';
+import middleware from 'i18next-http-middleware';
 
 class App {
   public app: Application;
@@ -21,6 +23,8 @@ class App {
 
   private configureMiddlewares(): void {
     this.app.use(express.json());
+    
+    this.app.use(middleware.handle(i18next));
 
     this.app.use((req: Request, res: Response, next: NextFunction) => {
       console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);

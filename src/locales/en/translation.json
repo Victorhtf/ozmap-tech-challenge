@@ -1,0 +1,37 @@
+{
+  "region": {
+    "validation": {
+      "required": "Name and geometry are required",
+      "polygon": "Geometry must be of type Polygon"
+    },
+    "error": {
+      "create": "Error creating region",
+      "getAll": "Error fetching regions",
+      "getById": "Error fetching region",
+      "update": "Error updating region",
+      "delete": "Error deleting region",
+      "getByCoordinates": "Error fetching regions by coordinates",
+      "duplicate": "Region with name '{{name}}' already exists"
+    },
+    "success": {
+      "status": "success"
+    }
+  },
+  "language": {
+    "error": {
+      "required": "Language is required",
+      "unsupported": "Language '{{language}}' is not supported. Supported languages: {{supported}}",
+      "change": "Error changing language",
+      "get": "Error getting current language"
+    },
+    "success": {
+      "changed": "Language successfully changed to '{{language}}'"
+    }
+  },
+  "common": {
+    "status": {
+      "success": "success",
+      "error": "error"
+    }
+  }
+}
