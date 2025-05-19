@@ -9,7 +9,24 @@ class Database {
   private isConnected: boolean = false;
 
   private constructor() {
-    this.mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/';
+    const mongoUri = process.env.MONGO_URI;
+    
+    if (mongoUri) {
+      this.mongoUri = mongoUri;
+      return;
+    }
+    
+    const username = process.env.MONGO_INITDB_ROOT_USERNAME;
+    const password = process.env.MONGO_INITDB_ROOT_PASSWORD;
+    const host = process.env.MONGO_INITDB_ROOT_HOST;
+    const port = process.env.MONGO_INITDB_ROOT_PORT;
+    const dbName = process.env.MONGO_INITDB_DATABASE;
+    
+    if (username && password) {
+      this.mongoUri = `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=admin`;
+    } else {
+      this.mongoUri = `mongodb://${host}:${port}/${dbName}`;      
+    }
   }
 
   public static getInstance(): Database {
@@ -21,7 +38,7 @@ class Database {
 
   public async connect(): Promise<void> {
     if (this.isConnected) {
-      console.log('Já está conectado ao MongoDB');
+      console.log('Já conectado ao banco de dados');
       return;
     }
 

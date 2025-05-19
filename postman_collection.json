@@ -1,0 +1,486 @@
+{
+  "info": {
+    "_postman_id": "e8a4a0c5-5d3b-4e0c-8f1d-6b3c7f1e7d9a",
+    "name": "OzMap API - Regions with i18n",
+    "description": "Coleção para testar a API de regiões com suporte a internacionalização",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "health"
+          ]
+        },
+        "description": "Verifica o status da API"
+      },
+      "response": []
+    },
+    {
+      "name": "Regions",
+      "item": [
+        {
+          "name": "Create Region",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Região Centro\",\n    \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [1, 2],\n                [1, 3],\n                [2, 2],\n                [2, 3],\n                [1, 2]\n            ]\n        ]\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/regions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions"
+              ]
+            },
+            "description": "Cria uma nova região"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Regions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/regions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions"
+              ]
+            },
+            "description": "Obtém todas as regiões"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Region by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"{{region_id}}\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/regions/id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions",
+                "id"
+              ]
+            },
+            "description": "Obtém uma região pelo ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Region",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"{{region_id}}\",\n    \"name\": \"Região Centro Atualizada\",\n    \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [1, 2],\n                [1, 3],\n                [2, 2],\n                [2, 3],\n                [1, 2]\n            ]\n        ]\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/regions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions"
+              ]
+            },
+            "description": "Atualiza uma região existente"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Region",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"{{region_id}}\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/regions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions"
+              ]
+            },
+            "description": "Exclui uma região"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Regions by Coordinates",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"coordinates\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [1.5, 2.5],\n                [1.5, 2.6],\n                [1.6, 2.6],\n                [1.6, 2.5],\n                [1.5, 2.5]\n            ]\n        ]\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/regions/coordinates",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions",
+                "coordinates"
+              ]
+            },
+            "description": "Obtém regiões por coordenadas"
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints relacionados a regiões"
+    },
+    {
+      "name": "Language",
+      "item": [
+        {
+          "name": "Get Current Language",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/language/current",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "language",
+                "current"
+              ]
+            },
+            "description": "Obtém o idioma atual da API"
+          },
+          "response": []
+        },
+        {
+          "name": "Change Language to English",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"language\": \"en\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/language/change",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "language",
+                "change"
+              ]
+            },
+            "description": "Altera o idioma para inglês"
+          },
+          "response": []
+        },
+        {
+          "name": "Change Language to Portuguese",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"language\": \"pt-BR\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/language/change",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "language",
+                "change"
+              ]
+            },
+            "description": "Altera o idioma para português"
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check with Language Query Param",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/health?lang=en",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "health"
+              ],
+              "query": [
+                {
+                  "key": "lang",
+                  "value": "en"
+                }
+              ]
+            },
+            "description": "Verifica o status da API com parâmetro de consulta de idioma"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Region with Language Header",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "en"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Central Region\",\n    \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [1, 2],\n                [1, 3],\n                [2, 2],\n                [2, 3],\n                [1, 2]\n            ]\n        ]\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/regions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions"
+              ]
+            },
+            "description": "Cria uma nova região com cabeçalho de idioma"
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints relacionados a idiomas"
+    },
+    {
+      "name": "Error Tests",
+      "item": [
+        {
+          "name": "Create Region with Missing Name",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"geometry\": {\n        \"type\": \"Polygon\",\n        \"coordinates\": [\n            [\n                [1, 2],\n                [1, 3],\n                [2, 2],\n                [2, 3],\n                [1, 2]\n            ]\n        ]\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/regions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions"
+              ]
+            },
+            "description": "Tenta criar uma região sem nome (deve falhar)"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Region with Wrong Geometry Type",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Região Inválida\",\n    \"geometry\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            [\n                [1, 2],\n                [1, 3],\n                [2, 2],\n                [2, 3],\n                [1, 2]\n            ]\n        ]\n    }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/regions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "regions"
+              ]
+            },
+            "description": "Tenta criar uma região com tipo de geometria incorreto (deve falhar)"
+          },
+          "response": []
+        },
+        {
+          "name": "Change to Unsupported Language",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"language\": \"fr\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/language/change",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "language",
+                "change"
+              ]
+            },
+            "description": "Tenta mudar para um idioma não suportado (deve falhar)"
+          },
+          "response": []
+        }
+      ],
+      "description": "Testes para verificar o tratamento de erros"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "region_id",
+      "value": "",
+      "type": "string",
+      "description": "ID da região criada para testes"
+    }
+  ]
+}

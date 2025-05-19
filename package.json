@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "seed": "ts-node src/seeds/regionSeed.ts"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,9 @@
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "i18next": "^25.1.3",
+    "i18next-fs-backend": "^2.6.0",
+    "i18next-http-middleware": "^3.7.4",
     "mongoose": "^7.5.3"
   },
   "devDependencies": {
