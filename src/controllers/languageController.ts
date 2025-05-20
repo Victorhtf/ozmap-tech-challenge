@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { RequestWithI18n } from '../types/i18n';
+import i18next from '../config/i18n';
 
 export default class LanguageController {
   static async changeLanguage(req: Request & RequestWithI18n, res: Response): Promise<void> {
@@ -14,7 +15,7 @@ export default class LanguageController {
         return;
       }
 
-      const supportedLanguages = req.i18n.languages;
+      const supportedLanguages = i18next.options.supportedLngs || ['pt-BR', 'en', 'es'];
       if (!supportedLanguages.includes(language)) {
         res.status(400).json({
           status: req.t('common.status.error'),
@@ -40,10 +41,13 @@ export default class LanguageController {
 
   static async getCurrentLanguage(req: Request & RequestWithI18n, res: Response): Promise<void> {
     try {
+      const supportedLanguages = (i18next.options.supportedLngs || ['pt-BR', 'en', 'es'])
+        .filter(lang => lang !== 'cimode' && lang !== 'dev');
+
       res.status(200).json({
         status: req.t('common.status.success'),
         currentLanguage: req.language,
-        supportedLanguages: req.i18n.languages,
+        supportedLanguages,
       });
     } catch (error) {
       res.status(500).json({

@@ -2,7 +2,10 @@
   "region": {
     "validation": {
       "required": "El nombre y la geometría son obligatorios",
-      "polygon": "La geometría debe ser de tipo Polígono"
+      "polygon": "La geometría debe ser de tipo Polígono",
+      "addressRequired": "La dirección es obligatoria",
+      "idRequired": "El ID de la región es obligatorio",
+      "distanceInvalid": "La distancia debe ser un número positivo"
     },
     "error": {
       "create": "Error al crear la región",
@@ -11,10 +14,20 @@
       "update": "Error al actualizar región",
       "delete": "Error al eliminar región",
       "getByCoordinates": "Error al buscar regiones por coordenadas",
-      "duplicate": "Ya existe una región con el nombre '{{name}}'"
+      "getByAddress": "Error al buscar regiones por dirección",
+      "getByDistance": "Error al buscar regiones por distancia",
+      "duplicate": "Ya existe una región con el nombre '{{name}}'",
+      "notFound": "Región no encontrada"
     },
     "success": {
-      "status": "success"
+      "status": "success",
+      "create": "Región creada con éxito",
+      "getById": "Región obtenida con éxito",
+      "update": "Región actualizada con éxito",
+      "delete": "Región eliminada con éxito",
+      "getByCoordinates": "Regiones obtenidas por coordenadas con éxito",
+      "getByAddress": "Regiones obtenidas por dirección con éxito",
+      "getByDistance": "Regiones obtenidas por distancia con éxito"
     }
   },
   "language": {
