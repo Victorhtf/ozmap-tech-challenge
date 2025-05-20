@@ -26,7 +26,6 @@ const RegionSchema = new Schema<IRegion>({
   },
 });
 
-// Habilita o Mongo a fazer consultas inteligentes em um conteúdo geospacial
 RegionSchema.index({ geometry: '2dsphere' });
 
 export const Region = model<IRegion>('Region', RegionSchema);

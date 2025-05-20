@@ -5,6 +5,9 @@ import { connectDB } from './src/config/database';
 import { errorHandler } from './src/middlewares/errorHandler';
 import i18next from './src/config/i18n';
 import middleware from 'i18next-http-middleware';
+import { requestLogger, errorLogger } from './src/middleware/loggerMiddleware';
+import fs from 'fs';
+import logger from './src/config/logger';
 
 class App {
   public app: Application;
@@ -16,9 +19,17 @@ class App {
     this.app = express();
     this.port = parseInt(process.env.PORT || '3000', 10);
 
+    this.ensureLogDirectory();
     this.configureMiddlewares();
     this.configureRoutes();
     this.configureErrorHandling();
+  }
+
+  private ensureLogDirectory(): void {
+    const logDir = 'logs';
+    if (!fs.existsSync(logDir)) {
+      fs.mkdirSync(logDir);
+    }
   }
 
   private configureMiddlewares(): void {
@@ -26,10 +37,7 @@ class App {
     
     this.app.use(middleware.handle(i18next));
 
-    this.app.use((req: Request, res: Response, next: NextFunction) => {
-      console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
-      next();
-    });
+    this.app.use(requestLogger);
   }
 
   private configureRoutes(): void {
@@ -37,6 +45,7 @@ class App {
   }
 
   private configureErrorHandling(): void {
+    this.app.use(errorLogger);
     this.app.use(errorHandler);
   }
 
@@ -45,11 +54,11 @@ class App {
       await connectDB();
 
       this.app.listen(this.port, () => {
-        console.log(`Servidor rodando na porta ${this.port}`);
-        console.log(`API disponível em http://localhost:${this.port}/api`);
+        logger.info(`Server running on port ${this.port}`);
+        logger.info(`API available at http://localhost:${this.port}/api`);
       });
     } catch (error) {
-      console.error('Erro ao iniciar o servidor:', error);
+      logger.error('Failed to start server:', error);
       process.exit(1);
     }
   }

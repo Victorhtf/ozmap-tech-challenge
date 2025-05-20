@@ -2,6 +2,7 @@ import { Region, IRegion } from '../models/Region';
 import { GeoJSONPolygon, GeoJSONPoint } from '../types';
 import i18next from '../config/i18n';
 import axios from 'axios';
+import logger from '../config/logger';
 
 export default class RegionService {
   static async createRegion(name: string, geometry: GeoJSONPolygon): Promise<IRegion> {
@@ -72,7 +73,7 @@ export default class RegionService {
       
       return regions;
     } catch (error) {
-      console.error('Erro ao buscar regiões por endereço:', error);
+      logger.error(`Error fetching regions by address: ${error}`);
       throw error;
     }
   }
@@ -91,7 +92,7 @@ export default class RegionService {
 
       return regions;
     } catch (error) {
-      console.error('Erro ao buscar regiões por distância:', error);
+      logger.error(`Error fetching regions by distance: ${error}`);
       throw error;
     }
   }
