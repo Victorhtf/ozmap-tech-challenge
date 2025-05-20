@@ -18,7 +18,7 @@ class Routes {
         status: req.t('common.status.success'),
         message: req.t('api.health.online', { default: 'API OzMap online' }),
         timestamp: new Date().toISOString(),
-        language: req.language
+        language: req.language,
       });
     });
   }

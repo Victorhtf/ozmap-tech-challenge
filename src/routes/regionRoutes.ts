@@ -10,5 +10,7 @@ router.put('/:id', RegionController.updateRegion);
 router.delete('/:id', RegionController.deleteRegion);
 
 router.post('/coordinates', RegionController.getRegionsByCoordinates);
+router.post('/address', RegionController.getRegionsByAddress);
+router.post('/distance', RegionController.getRegionsByDistance);
 
 export default router;

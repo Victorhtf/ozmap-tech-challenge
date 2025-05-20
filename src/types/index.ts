@@ -23,6 +23,12 @@ export interface GeoJSONPolygon {
   coordinates: number[][][];
 }
 
+// Tipo para ponto
+export interface GeoJSONPoint {
+  type: 'Point';
+  coordinates: [number, number];
+}
+
 // Tipos para regiões
 export interface IRegion extends Document {
   name: string;
@@ -38,7 +44,7 @@ export interface RegionBase {
 }
 
 // Tipos para requisições
-export type RegionRequest<T = any> = Request<{}, {}, T>
+export type RegionRequest<T = any> = Request<{}, {}, T>;
 
 // Tipos para craação e atualização de regiões
 export interface RegionCreate extends RegionBase {}

@@ -2,7 +2,10 @@
   "region": {
     "validation": {
       "required": "Nome e geometria são obrigatórios",
-      "polygon": "A geometria deve ser do tipo Polygon"
+      "polygon": "A geometria deve ser do tipo Polygon",
+      "addressRequired": "O endereço é obrigatório",
+      "idRequired": "O ID da região é obrigatório",
+      "distanceInvalid": "A distância deve ser um número positivo"
     },
     "error": {
       "create": "Erro ao criar região",
@@ -11,10 +14,20 @@
       "update": "Erro ao atualizar região",
       "delete": "Erro ao deletar região",
       "getByCoordinates": "Erro ao buscar regiões por coordenadas",
-      "duplicate": "Região com o nome '{{name}}' já existe"
+      "getByAddress": "Erro ao buscar regiões por endereço",
+      "getByDistance": "Erro ao buscar regiões por distância",
+      "duplicate": "Região com o nome '{{name}}' já existe",
+      "notFound": "Região não encontrada"
     },
     "success": {
-      "status": "success"
+      "status": "success",
+      "create": "Região criada com sucesso",
+      "getById": "Região obtida com sucesso",
+      "update": "Região atualizada com sucesso",
+      "delete": "Região excluída com sucesso",
+      "getByCoordinates": "Regiões obtidas por coordenadas com sucesso",
+      "getByAddress": "Regiões obtidas por endereço com sucesso",
+      "getByDistance": "Regiões obtidas por distância com sucesso"
     }
   },
   "language": {
@@ -32,6 +45,11 @@
     "status": {
       "success": "success",
       "error": "error"
+    }
+  },
+  "api": {
+    "health": {
+      "online": "API OzMap online"
     }
   }
 }

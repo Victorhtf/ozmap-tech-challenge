@@ -2,7 +2,10 @@
   "region": {
     "validation": {
       "required": "Name and geometry are required",
-      "polygon": "Geometry must be of type Polygon"
+      "polygon": "Geometry must be of type Polygon",
+      "addressRequired": "Address is required",
+      "idRequired": "Region ID is required",
+      "distanceInvalid": "Distance must be a positive number"
     },
     "error": {
       "create": "Error creating region",
@@ -11,10 +14,20 @@
       "update": "Error updating region",
       "delete": "Error deleting region",
       "getByCoordinates": "Error fetching regions by coordinates",
-      "duplicate": "Region with name '{{name}}' already exists"
+      "getByAddress": "Error fetching regions by address",
+      "getByDistance": "Error fetching regions by distance",
+      "duplicate": "Region with name '{{name}}' already exists",
+      "notFound": "Region not found"
     },
     "success": {
-      "status": "success"
+      "status": "success",
+      "create": "Region created successfully",
+      "getById": "Region retrieved successfully",
+      "update": "Region updated successfully",
+      "delete": "Region deleted successfully",
+      "getByCoordinates": "Regions retrieved by coordinates successfully",
+      "getByAddress": "Regions retrieved by address successfully",
+      "getByDistance": "Regions retrieved by distance successfully"
     }
   },
   "language": {
@@ -32,6 +45,11 @@
     "status": {
       "success": "success",
       "error": "error"
+    }
+  },
+  "api": {
+    "health": {
+      "online": "OzMap API online"
     }
   }
 }
