@@ -11,22 +11,22 @@ class Database {
 
   private constructor() {
     const mongoUri = process.env.MONGO_URI;
-    
+
     if (mongoUri) {
       this.mongoUri = mongoUri;
       return;
     }
-    
+
     const username = process.env.MONGO_INITDB_ROOT_USERNAME;
     const password = process.env.MONGO_INITDB_ROOT_PASSWORD;
     const host = process.env.MONGO_INITDB_ROOT_HOST;
     const port = process.env.MONGO_INITDB_ROOT_PORT;
     const dbName = process.env.MONGO_INITDB_DATABASE;
-    
+
     if (username && password) {
       this.mongoUri = `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=admin`;
     } else {
-      this.mongoUri = `mongodb://${host}:${port}/${dbName}`;      
+      this.mongoUri = `mongodb://${host}:${port}/${dbName}`;
     }
   }
 

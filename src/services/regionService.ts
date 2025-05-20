@@ -25,7 +25,11 @@ export default class RegionService {
     return Region.findById(id);
   }
 
-  static async updateRegion(id: string, name: string, geometry: GeoJSONPolygon): Promise<IRegion | null> {
+  static async updateRegion(
+    id: string,
+    name: string,
+    geometry: GeoJSONPolygon
+  ): Promise<IRegion | null> {
     return Region.findByIdAndUpdate(id, { name, geometry }, { new: true });
   }
 
@@ -38,23 +42,20 @@ export default class RegionService {
   }
 
   static async getRegionsByAddress(address: string): Promise<IRegion[]> {
-    const country = process.env.COUNTRY_CODE || 'BR'
+    const country = process.env.COUNTRY_CODE || 'BR';
 
     try {
-      const nominatimResponse = await axios.get(
-        'https://nominatim.openstreetmap.org/search',
-        {
-          params: {
-            q: address,
-            countrycodes: country.toLowerCase(),
-            format: 'json',
-            limit: 1
-          },
-          headers: {
-            'User-Agent': 'OzMap-API/1.0'
-          }
-        }
-      );
+      const nominatimResponse = await axios.get('https://nominatim.openstreetmap.org/search', {
+        params: {
+          q: address,
+          countrycodes: country.toLowerCase(),
+          format: 'json',
+          limit: 1,
+        },
+        headers: {
+          'User-Agent': 'OzMap-API/1.0',
+        },
+      });
 
       if (!nominatimResponse.data || nominatimResponse.data.length === 0) {
         return [];
@@ -66,11 +67,11 @@ export default class RegionService {
 
       const point = {
         type: 'Point',
-        coordinates: [lon, lat]
+        coordinates: [lon, lat],
       };
 
       const regions = await Region.find({ geometry: { $geoIntersects: { $geometry: point } } });
-      
+
       return regions;
     } catch (error) {
       logger.error(`Error fetching regions by address: ${error}`);
@@ -85,9 +86,9 @@ export default class RegionService {
       const regions = await Region.find({
         geometry: {
           $geoWithin: {
-            $centerSphere: [point.coordinates, distanceInRadians]
-          }
-        }
+            $centerSphere: [point.coordinates, distanceInRadians],
+          },
+        },
       });
 
       return regions;

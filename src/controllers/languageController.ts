@@ -6,7 +6,7 @@ export default class LanguageController {
   static async changeLanguage(req: Request & RequestWithI18n, res: Response): Promise<void> {
     try {
       const { language } = req.body;
-      
+
       if (!language) {
         res.status(400).json({
           status: req.t('common.status.error'),
@@ -19,7 +19,10 @@ export default class LanguageController {
       if (!supportedLanguages.includes(language)) {
         res.status(400).json({
           status: req.t('common.status.error'),
-          message: req.t('language.error.unsupported', { language, supported: supportedLanguages.join(', ') }),
+          message: req.t('language.error.unsupported', {
+            language,
+            supported: supportedLanguages.join(', '),
+          }),
         });
         return;
       }
@@ -41,8 +44,9 @@ export default class LanguageController {
 
   static async getCurrentLanguage(req: Request & RequestWithI18n, res: Response): Promise<void> {
     try {
-      const supportedLanguages = (i18next.options.supportedLngs || ['pt-BR', 'en', 'es'])
-        .filter(lang => lang !== 'cimode' && lang !== 'dev');
+      const supportedLanguages = (i18next.options.supportedLngs || ['pt-BR', 'en', 'es']).filter(
+        (lang) => lang !== 'cimode' && lang !== 'dev'
+      );
 
       res.status(200).json({
         status: req.t('common.status.success'),

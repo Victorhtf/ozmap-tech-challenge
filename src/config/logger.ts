@@ -1,7 +1,6 @@
 import winston from 'winston';
 import path from 'path';
 
-
 class Logger {
   private static instance: Logger;
   private logger: winston.Logger;
@@ -56,7 +55,7 @@ class Logger {
   private getFileFormat(): winston.Logform.Format {
     return winston.format.combine(
       winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss:ms' }),
-      winston.format.json(),
+      winston.format.json()
     );
   }
 
@@ -68,7 +67,7 @@ class Logger {
         level: 'error',
         format: this.getFileFormat(),
       }),
-      new winston.transports.File({ 
+      new winston.transports.File({
         filename: path.join('logs', 'all.log'),
         format: this.getFileFormat(),
       }),

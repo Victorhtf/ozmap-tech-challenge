@@ -1,112 +1,129 @@
 import mongoose from 'mongoose';
 import { Region } from '../models/Region';
 import database from '../config/database';
+import logger from '../config/logger';
 
 const regions = [
   {
     name: 'Região Centro de São Paulo',
     geometry: {
       type: 'Polygon',
-      coordinates: [[
-        [-46.6500, -23.5500],
-        [-46.6500, -23.5300],
-        [-46.6300, -23.5300],
-        [-46.6300, -23.5500],
-        [-46.6500, -23.5500]
-      ]]
-    }
+      coordinates: [
+        [
+          [-46.65, -23.55],
+          [-46.65, -23.53],
+          [-46.63, -23.53],
+          [-46.63, -23.55],
+          [-46.65, -23.55],
+        ],
+      ],
+    },
   },
   {
     name: 'Zona Sul de São Paulo',
     geometry: {
       type: 'Polygon',
-      coordinates: [[
-        [-46.6800, -23.5900],
-        [-46.6800, -23.5700],
-        [-46.6600, -23.5700],
-        [-46.6600, -23.5900],
-        [-46.6800, -23.5900]
-      ]]
-    }
+      coordinates: [
+        [
+          [-46.68, -23.59],
+          [-46.68, -23.57],
+          [-46.66, -23.57],
+          [-46.66, -23.59],
+          [-46.68, -23.59],
+        ],
+      ],
+    },
   },
   {
     name: 'Zona Norte do Rio de Janeiro',
     geometry: {
       type: 'Polygon',
-      coordinates: [[
-        [-43.2800, -22.8900],
-        [-43.2800, -22.8700],
-        [-43.2600, -22.8700],
-        [-43.2600, -22.8900],
-        [-43.2800, -22.8900]
-      ]]
-    }
+      coordinates: [
+        [
+          [-43.28, -22.89],
+          [-43.28, -22.87],
+          [-43.26, -22.87],
+          [-43.26, -22.89],
+          [-43.28, -22.89],
+        ],
+      ],
+    },
   },
   {
     name: 'Centro de Belo Horizonte',
     geometry: {
       type: 'Polygon',
-      coordinates: [[
-        [-43.9500, -19.9300],
-        [-43.9500, -19.9100],
-        [-43.9300, -19.9100],
-        [-43.9300, -19.9300],
-        [-43.9500, -19.9300]
-      ]]
-    }
+      coordinates: [
+        [
+          [-43.95, -19.93],
+          [-43.95, -19.91],
+          [-43.93, -19.91],
+          [-43.93, -19.93],
+          [-43.95, -19.93],
+        ],
+      ],
+    },
   },
   {
     name: 'Região Metropolitana de Curitiba',
     geometry: {
       type: 'Polygon',
-      coordinates: [[
-        [-49.3000, -25.5000],
-        [-49.3000, -25.4000],
-        [-49.2000, -25.4000],
-        [-49.2000, -25.5000],
-        [-49.3000, -25.5000]
-      ]]
-    }
+      coordinates: [
+        [
+          [-49.3, -25.5],
+          [-49.3, -25.4],
+          [-49.2, -25.4],
+          [-49.2, -25.5],
+          [-49.3, -25.5],
+        ],
+      ],
+    },
   },
   {
     name: 'Região da Avenida Paulista',
     geometry: {
       type: 'Polygon',
-      coordinates: [[
-        [-46.6650, -23.5600], // Ponto sudoeste (SW)
-        [-46.6650, -23.5550], // Ponto noroeste (NW)
-        [-46.6550, -23.5550], // Ponto nordeste (NE)
-        [-46.6550, -23.5600], // Ponto sudeste (SE)
-        [-46.6650, -23.5600]  // Fechamento do polígono (igual ao primeiro ponto)
-      ]]
-    }
+      coordinates: [
+        [
+          [-46.665, -23.56],
+          [-46.665, -23.555],
+          [-46.655, -23.555],
+          [-46.655, -23.56],
+          [-46.665, -23.56],
+        ],
+      ],
+    },
   },
   {
     name: 'Jardins - São Paulo',
     geometry: {
       type: 'Polygon',
-      coordinates: [[
-        [-46.6700, -23.5650],
-        [-46.6700, -23.5500],
-        [-46.6500, -23.5500],
-        [-46.6500, -23.5650],
-        [-46.6700, -23.5650]
-      ]]
-    }
+      coordinates: [
+        [
+          [-46.67, -23.565],
+          [-46.67, -23.55],
+          [-46.65, -23.55],
+          [-46.65, -23.565],
+          [-46.67, -23.565],
+        ],
+      ],
+    },
   },
   {
     name: 'Consolação - São Paulo',
     geometry: {
       type: 'Polygon',
-      coordinates: [[
-        [-46.6650, -23.5600],
-        [-46.6650, -23.5450],
-        [-46.6500, -23.5450],
-        [-46.6500, -23.5600],
-        [-46.6650, -23.5600]
-      ]]
-    }
-  }
+      coordinates: [
+        [
+          [-46.665, -23.56],
+          [-46.665, -23.545],
+          [-46.65, -23.545],
+          [-46.65, -23.56],
+          [-46.665, -23.56],
+        ],
+      ],
+    },
+  },
 ];
 
 async function seedRegions() {
@@ -118,11 +135,11 @@ async function seedRegions() {
     await Region.insertMany(regions);
 
     await mongoose.disconnect();
-    console.log('Banco de dados populado com sucesso')
+    logger.info('Database successfully populated');
 
     process.exit(0);
   } catch (error) {
-    console.error('Erro ao popular o banco de dados:', error);
+    logger.error(`Error populating database: ${error}`);
     process.exit(1);
   }
 }

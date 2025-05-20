@@ -4,7 +4,10 @@ import { RegionCreate, RegionUpdate, RegionRequest, RequestWithI18n } from '../t
 import logger from '../config/logger';
 
 export default class RegionController {
-  static async createRegion(req: RegionRequest<RegionCreate> & RequestWithI18n, res: Response): Promise<void> {
+  static async createRegion(
+    req: RegionRequest<RegionCreate> & RequestWithI18n,
+    res: Response
+  ): Promise<void> {
     try {
       const { name, geometry } = req.body;
       logger.info(`Attempting to create region: ${name}`);
@@ -35,7 +38,9 @@ export default class RegionController {
         data: region,
       });
     } catch (error) {
-      logger.error(`Error creating region: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      logger.error(
+        `Error creating region: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
       res.status(400).json({
         status: req.t('common.status.error'),
         message: error instanceof Error ? error.message : req.t('region.error.create'),
@@ -66,7 +71,7 @@ export default class RegionController {
     try {
       const { id } = req.params;
       logger.info(`Fetching region by ID: ${id}`);
-      
+
       if (!id) {
         res.status(400).json({
           status: req.t('common.status.error'),
@@ -76,12 +81,12 @@ export default class RegionController {
       }
 
       const region = await RegionService.getRegionById(id);
-      
+
       if (!region) {
         res.status(404).json({
           status: req.t('common.status.error'),
           message: req.t('region.error.notFound', { default: 'Region not found' }),
-          results: 0
+          results: 0,
         });
         return;
       }
@@ -106,7 +111,7 @@ export default class RegionController {
       const { id } = req.params;
       const { name, geometry } = req.body;
       logger.info(`Attempting to update region ID: ${id}, Name: ${name}`);
-      
+
       if (!id) {
         res.status(400).json({
           status: req.t('common.status.error'),
@@ -114,7 +119,7 @@ export default class RegionController {
         });
         return;
       }
-      
+
       if (!name || !geometry || !geometry.coordinates || !geometry.type) {
         res.status(400).json({
           status: req.t('common.status.error'),
@@ -130,14 +135,14 @@ export default class RegionController {
         });
         return;
       }
-      
+
       const region = await RegionService.updateRegion(id, name, geometry);
-      
+
       if (!region) {
         res.status(404).json({
           status: req.t('common.status.error'),
           message: req.t('region.error.notFound', { default: 'Region not found' }),
-          results: 0
+          results: 0,
         });
         return;
       }
@@ -161,7 +166,7 @@ export default class RegionController {
     try {
       const { id } = req.params;
       logger.info(`Attempting to delete region: ${id}`);
-      
+
       if (!id) {
         logger.warn('Region ID not provided for deletion');
         res.status(400).json({
@@ -170,15 +175,15 @@ export default class RegionController {
         });
         return;
       }
-      
+
       const region = await RegionService.deleteRegion(id);
-      
+
       if (!region) {
         logger.warn(`Region not found with ID: ${id}`);
         res.status(404).json({
           status: req.t('common.status.error'),
           message: req.t('region.error.notFound', { default: 'Region not found' }),
-          results: 0
+          results: 0,
         });
         return;
       }
@@ -191,7 +196,9 @@ export default class RegionController {
         data: region,
       });
     } catch (error) {
-      logger.error(`Error deleting region: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      logger.error(
+        `Error deleting region: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
       res.status(500).json({
         status: req.t('common.status.error'),
         message: error instanceof Error ? error.message : req.t('region.error.delete'),
@@ -199,22 +206,29 @@ export default class RegionController {
     }
   }
 
-  static async getRegionsByCoordinates(req: Request & RequestWithI18n, res: Response): Promise<void> {
+  static async getRegionsByCoordinates(
+    req: Request & RequestWithI18n,
+    res: Response
+  ): Promise<void> {
     try {
       const { coordinates } = req.body;
       logger.info(`Fetching regions by coordinates: [${coordinates}]`);
-      
+
       const regions = await RegionService.getRegionsByCoordinates(coordinates);
       logger.info(`${regions.length} regions found by coordinates`);
 
       res.status(200).json({
         status: req.t('common.status.success'),
-        message: req.t('region.success.getByCoordinates', { default: 'Regions retrieved by coordinates successfully' }),
+        message: req.t('region.success.getByCoordinates', {
+          default: 'Regions retrieved by coordinates successfully',
+        }),
         results: regions.length,
         data: regions,
       });
     } catch (error) {
-      logger.error(`Error fetching regions by coordinates: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      logger.error(
+        `Error fetching regions by coordinates: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
       res.status(500).json({
         status: req.t('common.status.error'),
         message: error instanceof Error ? error.message : req.t('region.error.getByCoordinates'),
@@ -238,19 +252,26 @@ export default class RegionController {
 
       const regions = await RegionService.getRegionsByAddress(address);
       logger.info(`${regions.length} regions found for address: ${address}`);
-      
+
       res.status(200).json({
         status: req.t('common.status.success'),
-        message: req.t('region.success.getByAddress', { default: 'Regions retrieved by address successfully' }),
+        message: req.t('region.success.getByAddress', {
+          default: 'Regions retrieved by address successfully',
+        }),
         results: regions.length,
         data: regions,
-        query: { address }
+        query: { address },
       });
     } catch (error) {
-      logger.error(`Error fetching regions by address: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      logger.error(
+        `Error fetching regions by address: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
       res.status(500).json({
         status: req.t('common.status.error'),
-        message: error instanceof Error ? error.message : req.t('region.error.getByAddress', { default: 'Error fetching regions by address' }),
+        message:
+          error instanceof Error
+            ? error.message
+            : req.t('region.error.getByAddress', { default: 'Error fetching regions by address' }),
       });
     }
   }
@@ -264,7 +285,9 @@ export default class RegionController {
         logger.warn('Point coordinates or distance not provided');
         res.status(400).json({
           status: req.t('common.status.error'),
-          message: req.t('region.validation.pointDistanceRequired', { default: 'Point coordinates and distance are required' }),
+          message: req.t('region.validation.pointDistanceRequired', {
+            default: 'Point coordinates and distance are required',
+          }),
         });
         return;
       }
@@ -283,26 +306,39 @@ export default class RegionController {
         logger.warn(`Invalid distance value: ${distance}`);
         res.status(400).json({
           status: req.t('common.status.error'),
-          message: req.t('region.validation.distanceInvalid', { default: 'Distance must be a positive number' }),
+          message: req.t('region.validation.distanceInvalid', {
+            default: 'Distance must be a positive number',
+          }),
         });
         return;
       }
 
       const regions = await RegionService.getRegionsByDistance(point, distanceInKm);
-      logger.info(`${regions.length} regions found within ${distanceInKm}km from point [${point.coordinates}]`);
-      
+      logger.info(
+        `${regions.length} regions found within ${distanceInKm}km from point [${point.coordinates}]`
+      );
+
       res.status(200).json({
         status: req.t('common.status.success'),
-        message: req.t('region.success.getByDistance', { default: 'Regions retrieved by distance successfully' }),
+        message: req.t('region.success.getByDistance', {
+          default: 'Regions retrieved by distance successfully',
+        }),
         results: regions.length,
         data: regions,
-        query: { point, distance: distanceInKm }
+        query: { point, distance: distanceInKm },
       });
     } catch (error) {
-      logger.error(`Error fetching regions by distance: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      logger.error(
+        `Error fetching regions by distance: ${error instanceof Error ? error.message : 'Unknown error'}`
+      );
       res.status(500).json({
         status: req.t('common.status.error'),
-        message: error instanceof Error ? error.message : req.t('region.error.getByDistance', { default: 'Error fetching regions by distance' }),
+        message:
+          error instanceof Error
+            ? error.message
+            : req.t('region.error.getByDistance', {
+                default: 'Error fetching regions by distance',
+              }),
       });
     }
   }

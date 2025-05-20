@@ -1,7 +1,6 @@
 # Dependências
 node_modules
 
-
 # Logs
 logs
 *.log
@@ -15,6 +14,7 @@ yarn-error.log*
 
 # Arquivos de cobertura
 /coverage
+.nyc_output
 
 # Arquivos temporários
 .DS_Store
@@ -41,3 +41,4 @@ yarn-error.log*
 
 # Variáveis de ambiente
 .env
+.nyc_output/f20331bf-bb3c-474c-b31b-cb9b44bb26d5.json

@@ -34,7 +34,7 @@ class App {
 
   private configureMiddlewares(): void {
     this.app.use(express.json());
-    
+
     this.app.use(middleware.handle(i18next));
 
     this.app.use(requestLogger);

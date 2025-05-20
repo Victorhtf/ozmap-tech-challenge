@@ -14,14 +14,9 @@
         "url": {
           "raw": "http://localhost:3000/api/health",
           "protocol": "http",
-          "host": [
-            "localhost"
-          ],
+          "host": ["localhost"],
           "port": "3000",
-          "path": [
-            "api",
-            "health"
-          ]
+          "path": ["api", "health"]
         },
         "description": "Verifica o status da API"
       },
@@ -47,14 +42,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions"
-              ]
+              "path": ["api", "regions"]
             },
             "description": "Cria uma nova região"
           },
@@ -68,14 +58,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions"
-              ]
+              "path": ["api", "regions"]
             },
             "description": "Obtém todas as regiões"
           },
@@ -89,15 +74,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions/{{region_id}}",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions",
-                "{{region_id}}"
-              ]
+              "path": ["api", "regions", "{{region_id}}"]
             },
             "description": "Obtém uma região pelo ID"
           },
@@ -120,15 +99,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions/{{region_id}}",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions",
-                "{{region_id}}"
-              ]
+              "path": ["api", "regions", "{{region_id}}"]
             },
             "description": "Atualiza uma região existente"
           },
@@ -142,15 +115,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions/{{region_id}}",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions",
-                "{{region_id}}"
-              ]
+              "path": ["api", "regions", "{{region_id}}"]
             },
             "description": "Exclui uma região"
           },
@@ -173,15 +140,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions/coordinates",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions",
-                "coordinates"
-              ]
+              "path": ["api", "regions", "coordinates"]
             },
             "description": "Obtém regiões por coordenadas"
           },
@@ -204,15 +165,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions/address",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions",
-                "address"
-              ]
+              "path": ["api", "regions", "address"]
             },
             "description": "Obtém regiões por endereço"
           },
@@ -235,15 +190,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions/distance",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions",
-                "distance"
-              ]
+              "path": ["api", "regions", "distance"]
             },
             "description": "Obtém regiões dentro de uma determinada distância (em km) de um ponto"
           },
@@ -263,15 +212,9 @@
             "url": {
               "raw": "http://localhost:3000/api/language/current",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "language",
-                "current"
-              ]
+              "path": ["api", "language", "current"]
             },
             "description": "Obtém o idioma atual da API"
           },
@@ -294,15 +237,9 @@
             "url": {
               "raw": "http://localhost:3000/api/language/change",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "language",
-                "change"
-              ]
+              "path": ["api", "language", "change"]
             },
             "description": "Altera o idioma para inglês"
           },
@@ -325,15 +262,9 @@
             "url": {
               "raw": "http://localhost:3000/api/language/change",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "language",
-                "change"
-              ]
+              "path": ["api", "language", "change"]
             },
             "description": "Altera o idioma para português"
           },
@@ -356,15 +287,9 @@
             "url": {
               "raw": "http://localhost:3000/api/language/change",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "language",
-                "change"
-              ]
+              "path": ["api", "language", "change"]
             },
             "description": "Altera o idioma para espanhol"
           },
@@ -378,14 +303,9 @@
             "url": {
               "raw": "http://localhost:3000/api/health?lang=en",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "health"
-              ],
+              "path": ["api", "health"],
               "query": [
                 {
                   "key": "lang",
@@ -420,14 +340,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions"
-              ]
+              "path": ["api", "regions"]
             },
             "description": "Tenta criar uma região sem nome (deve falhar)"
           },
@@ -450,14 +365,9 @@
             "url": {
               "raw": "http://localhost:3000/api/regions",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "regions"
-              ]
+              "path": ["api", "regions"]
             },
             "description": "Tenta criar uma região com tipo de geometria incorreto (deve falhar)"
           },
@@ -480,15 +390,9 @@
             "url": {
               "raw": "http://localhost:3000/api/language/change",
               "protocol": "http",
-              "host": [
-                "localhost"
-              ],
+              "host": ["localhost"],
               "port": "3000",
-              "path": [
-                "api",
-                "language",
-                "change"
-              ]
+              "path": ["api", "language", "change"]
             },
             "description": "Tenta mudar para um idioma não suportado (deve falhar)"
           },
@@ -503,18 +407,14 @@
       "listen": "prerequest",
       "script": {
         "type": "text/javascript",
-        "exec": [
-          ""
-        ]
+        "exec": [""]
       }
     },
     {
       "listen": "test",
       "script": {
         "type": "text/javascript",
-        "exec": [
-          ""
-        ]
+        "exec": [""]
       }
     }
   ],

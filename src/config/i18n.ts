@@ -5,10 +5,9 @@ import path from 'path';
 import fs from 'fs';
 
 const localesPath = path.join(__dirname, '../locales');
-const availableLanguages = fs.readdirSync(localesPath).filter(file => 
-  fs.statSync(path.join(localesPath, file)).isDirectory()
-);
-
+const availableLanguages = fs
+  .readdirSync(localesPath)
+  .filter((file) => fs.statSync(path.join(localesPath, file)).isDirectory());
 
 i18next
   .use(Backend)

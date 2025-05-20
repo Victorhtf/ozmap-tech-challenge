@@ -34,11 +34,11 @@ class LoggerMiddleware {
     return expressWinston.logger({
       transports: [
         new winston.transports.Console({
-          format: this.getConsoleFormat()
+          format: this.getConsoleFormat(),
         }),
         new winston.transports.File({
           filename: path.join('logs', 'requests.log'),
-          format: this.getFileFormat()
+          format: this.getFileFormat(),
         }),
       ],
       meta: true,
@@ -53,11 +53,11 @@ class LoggerMiddleware {
     return expressWinston.errorLogger({
       transports: [
         new winston.transports.Console({
-          format: this.getConsoleFormat()
+          format: this.getConsoleFormat(),
         }),
         new winston.transports.File({
           filename: path.join('logs', 'errors.log'),
-          format: this.getFileFormat()
+          format: this.getFileFormat(),
         }),
       ],
       meta: true,
